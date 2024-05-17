@@ -1,0 +1,84 @@
+<div class="container-fluid d-flex align-items-center justify-content-center p-2 mt-5">
+    <div class="bg-white d-flex align-items-center justify-content-center border border-5 rounded-3 m-2 p-2">
+      <div class="container">
+        <h2>Add User</h2>
+        <form #userForm="ngForm" novalidate (ngSubmit)="addUser(userForm)">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" class="form-control" name="firstName" [(ngModel)]="newUser.firstName" #firstName="ngModel" required>
+          </div>
+          <div class="error-message" [hidden]="firstName.valid || firstName.untouched" >
+            <span class="text-danger fw-bold">Пожалуйста, введите имя</span>
+        </div>
+  
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" class="form-control" name="lastName" [(ngModel)]="newUser.lastName" #lastName="ngModel" required>
+          </div>
+          <div class="error-message" [hidden]="lastName.valid || lastName.untouched" >
+            <span class="text-danger fw-bold">Пожалуйста, введите фамилию</span>
+        </div>
+  
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="form-control" name="email" [(ngModel)]="newUser.email" #email="ngModel" required>
+          </div>
+          <div class="error-message" [hidden]="email.valid || email.untouched" >
+            <span class="text-danger fw-bold">Пожалуйста, введите email</span>
+        </div>
+  
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" class="form-control" name="gender" [(ngModel)]="newUser.gender" #gender="ngModel" required>
+              <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+            </select>
+          </div>
+          <div class="error-message" [hidden]="gender.valid || gender.untouched" >
+            <span class="text-danger fw-bold">Пожалуйста, выберите пол</span>
+        </div>
+  
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" id="dateOfBirth" class="form-control" name="dateOfBirth" [(ngModel)]="newUser.dateOfBirth" #dateOfBirth="ngModel" required>
+          </div>
+          <div class="error-message" [hidden]="dateOfBirth.valid || dateOfBirth.untouched" >
+            <span class="text-danger fw-bold">Пожалуйста, укажите дату рождения</span>
+        </div>
+  
+          <div class="form-group">
+            <label for="weight">Weight (in kg):</label>
+            <input type="number" id="weight" class="form-control" name="weight" [(ngModel)]="newUser.weight" #weight="ngModel" required>
+          </div>
+          <div class="error-message" [hidden]="weight.valid || weight.untouched" >
+            <span class="text-danger fw-bold">Пожалуйста, укажите свой вес</span>
+        </div>
+  
+          <div class="form-group">
+            <label for="height">Height (in cm):</label>
+            <input type="number" id="height" class="form-control" name="height" [(ngModel)]="newUser.height" #height="ngModel" required>
+          </div>
+          <div class="error-message" [hidden]="height.valid || height.untouched" >
+            <span class="text-danger fw-bold">Пожалуйста, укажите свой рост</span>
+        </div>
+  
+          <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Add User</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <h2>User List</h2>
+  <ul class="list-group">
+    <li *ngFor="let user of users" class="list-group-item">
+      <div>Name: {{ user.firstName }} {{ user.lastName }}</div>
+      <div>Email: {{ user.email }}</div>
+      <div>Gender: {{ user.gender }}</div>
+      <div>Date of Birth: {{ user.dateOfBirth | date }}</div>
+      <div>Age: {{ getAge(user) }}</div>
+      <div>Weight: {{ user.weight }} kg</div>
+      <div>Height: {{ user.height }} cm</div>
+      <div>BMR: {{ calculateBMR(user) }}</div>
+      <a class="btn btn-primary" [routerLink]="['/Users', user.id]">Edit</a>    
+      <button (click)="deleteUser(user.id)">Delete</button>
+    </li>
+  </ul>

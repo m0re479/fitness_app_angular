@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <h3>Edit Workout</h3>
+    <form class="form p-2" (submit)="updateWorkout()">
+      <div class="form-group">
+        <label for="user">User:</label>
+        <select id="user" class="form-control" name="user" [(ngModel)]="selectedWorkout.user" required>
+          <option *ngFor="let user of users" [ngValue]="user">{{ user.firstName }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="dateTime">Date and Time:</label>
+        <input type="datetime-local" id="dateTime" class="form-control" name="dateTime" [(ngModel)]="selectedWorkout.dateTime" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <select id="type" class="form-control" name="type" [(ngModel)]="selectedWorkout.type" required>
+          <option *ngFor="let type of workoutTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="intensity">Intensity:</label>
+        <select id="intensity" class="form-control" name="intensity" [(ngModel)]="selectedWorkout.intensity" required>
+          <option *ngFor="let intensity of intensities" [value]="intensity">{{ intensity }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label>Exercises:</label>
+        <ul class="list-group">
+          <li *ngFor="let exercise of selectedWorkout.exercises; let i = index" class="list-group-item">
+            {{ getFullDescription(exercise) }}
+            <button (click)="removeExerciseFromWorkout(exercise, $event)">Remove</button>
+          </li>
+        </ul>
+        <button (click)="addExerciseToWorkout(exercise, $event)" *ngFor="let exercise of exercises">Add {{ exercise.name }}</button>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Update Workout</button>
+    </form>
+  </div>
+  <select id="user" class="form-control" name="user" [(ngModel)]="selectedWorkout.user" required>

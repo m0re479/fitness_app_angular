@@ -1,0 +1,34 @@
+{
+  "exercises": [
+    {
+      "id": "4",
+      "name": "Push Press",
+      "description": "The push press is a variant of the overhead press where you use your legs to help lift the bar. In the push press you only bend your knees once, when you accelerate the bar, as opposed to a jerk, where you bend your knees a second time to catch the bar on straight arms.",
+      "sets": 10,
+      "reps": 3,
+      "duration": 300,
+      "caloriesBurned": 600,
+      "intensity": "high"
+    },
+    {
+      "id": "5",
+      "name": "Air Squat",
+      "description": "The air squat is a classic exercise that requires no equipment. For the beginner, this exercise might initiate a strength gain all on its own, and for the more experienced trainee it might serve as a mobility-increasing exercise, warm-up or rehabilitation. You can aid your balance in this exercise by holding out your arms in front of you, or even holding a light weight, like in a goblet squat.",
+      "sets": 15,
+      "reps": 4,
+      "duration": 600,
+      "caloriesBurned": 320,
+      "intensity": "medium"
+    },
+    {
+      "id": "6",
+      "name": "Plank",
+      "description": "The plank is a bodyweight exercise to strengthen your abdominals. The exercise can be made more challenging by placing your hands or feet on an unstable surface (such as a Bosu ball, balance board, or in suspended rings), or by placing a weight on your back.",
+      "sets": 1,
+      "reps": 2,
+      "duration": 60,
+      "caloriesBurned": 200,
+      "intensity": "low"
+    }
+  ]
+}

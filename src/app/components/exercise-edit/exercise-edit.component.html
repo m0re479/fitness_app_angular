@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <h3>Edit Exercise</h3>
+    <form class="form p-2" (submit)="updateExercise()">
+      <label for="name">Name</label><br>
+      <input type="text" [(ngModel)]="selectedExercise.name" name="name" #name="ngModel" required><br>
+  
+      <label for="description">Description</label><br>
+      <input type="text" [(ngModel)]="selectedExercise.description" name="description"><br>
+
+      <label for="intensity">Intensity:</label>
+        <select id="intensity" class="form-control" name="intensity"
+                [(ngModel)]="selectedExercise.intensity" required>
+        <option *ngFor="let intensity of intensities" [value]="intensity">{{intensity}}</option>        
+      </select>
+     
+  
+      <label for="sets">Sets</label><br>
+      <input type="number" [(ngModel)]="selectedExercise.sets" name="sets"><br>
+  
+      <label for="reps">Reps</label><br>
+      <input type="number" [(ngModel)]="selectedExercise.reps" name="reps"><br>
+  
+      <label for="duration">Duration</label><br>
+      <input type="number" [(ngModel)]="selectedExercise.duration" name="duration"><br>
+  
+      <label for="caloriesBurned">Calories Burned</label><br>
+      <input type="number" [(ngModel)]="selectedExercise.caloriesBurned" name="caloriesBurned"><br>
+  
+      <button type="submit" [disabled]="name.invalid">Update Exercise</button>
+    </form>
+  </div>
